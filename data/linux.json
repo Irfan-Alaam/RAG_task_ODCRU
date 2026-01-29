@@ -1,0 +1,1372 @@
+{
+  "dataset_name": "Linux Commands Knowledge Base",
+  "description": "A comprehensive dataset of Linux commands, installation guides, and concepts for RAG system training",
+  "version": "2.0",
+  "last_updated": "2024-01-14",
+  "installation_guides": [
+    {
+      "guide_id": "LINUX-INSTALL-001",
+      "title": "How to Install Linux on a PC",
+      "skill_level": "Beginner",
+      "overview": "This guide explains how to install Linux on a personal computer using a bootable USB drive.",
+      "prerequisites": [
+        "A computer with at least 4GB RAM",
+        "USB drive (8GB or larger)",
+        "Linux ISO file",
+        "Backup of important data"
+      ],
+      "steps": [
+        "Choose a Linux distribution (Ubuntu, Fedora, Linux Mint)",
+        "Download the ISO image from official website",
+        "Create a bootable USB using tools like Rufus or Balena Etcher",
+        "Boot from USB by changing BIOS/UEFI boot order",
+        "Launch installer and select language and keyboard",
+        "Choose installation type (dual boot or full install)",
+        "Configure disk partitions",
+        "Set username and password",
+        "Complete installation and reboot"
+      ],
+      "common_distributions": [
+        "Ubuntu",
+        "Fedora",
+        "Linux Mint",
+        "Debian"
+      ],
+      "post_installation_steps": [
+        "Update system packages",
+        "Install proprietary drivers",
+        "Configure firewall",
+        "Install essential software"
+      ],
+      "troubleshooting": [
+        "System not booting from USB",
+        "Installer not detecting disk",
+        "Wi-Fi not working after install"
+      ],
+      "security_notes": [
+        "Enable full disk encryption if available",
+        "Use strong passwords",
+        "Keep system updated"
+      ]
+    },
+    {
+      "guide_id": "LINUX-INSTALL-002",
+      "title": "Installing Linux on Virtual Machine",
+      "skill_level": "Beginner",
+      "overview": "Guide for installing Linux on virtual machine software like VirtualBox or VMware",
+      "prerequisites": [
+        "VirtualBox, VMware, or Hyper-V installed",
+        "Linux ISO file",
+        "At least 20GB free disk space",
+        "4GB RAM available for VM"
+      ],
+      "steps": [
+        "Download and install virtualization software",
+        "Create new virtual machine",
+        "Allocate resources (RAM, CPU, disk)",
+        "Attach Linux ISO as virtual CD/DVD",
+        "Start VM and follow installation wizard",
+        "Install guest additions/tools",
+        "Configure network settings"
+      ]
+    },
+    {
+      "guide_id": "LINUX-INSTALL-003",
+      "title": "Installing Linux Server Edition",
+      "skill_level": "Intermediate",
+      "overview": "Installation guide for server-focused Linux distributions",
+      "prerequisites": [
+        "Server hardware or VM",
+        "Network connection",
+        "SSH client for remote access"
+      ],
+      "steps": [
+        "Download server ISO (Ubuntu Server, CentOS, Debian)",
+        "Boot from installation media",
+        "Select minimal/server installation",
+        "Configure network and hostname",
+        "Set up partitioning (LVM recommended)",
+        "Select software packages (SSH server, web server, etc.)",
+        "Configure user accounts and SSH keys",
+        "Complete installation and reboot"
+      ]
+    },
+	{
+  "guide_id": "LINUX-INSTALL-004",
+  "title": "Dual Boot Linux with Windows",
+  "skill_level": "Intermediate",
+  "overview": "Guide to installing Linux alongside an existing Windows installation.",
+  "prerequisites": [
+    "Windows installed in UEFI mode",
+    "Free unallocated disk space",
+    "Fast Startup disabled in Windows"
+  ],
+  "steps": [
+    "Backup Windows system",
+    "Disable Secure Boot if required",
+    "Shrink Windows partition",
+    "Boot Linux installer in UEFI mode",
+    "Choose 'Install alongside Windows'",
+    "Configure GRUB bootloader"
+  ],
+  "troubleshooting": [
+    "Windows not appearing in GRUB",
+    "Boot loops after installation",
+    "Secure Boot conflicts"
+  ]
+}
+
+  ],
+  "linux_fundamentals": [
+    {
+      "topic_id": "FUND-001",
+      "topic": "Linux File System Hierarchy",
+      "description": "Standard directory structure in Linux systems",
+      "directories": [
+        {
+          "path": "/",
+          "description": "Root directory, contains all other directories"
+        },
+        {
+          "path": "/bin",
+          "description": "Essential user command binaries"
+        },
+        {
+          "path": "/etc",
+          "description": "System configuration files"
+        },
+        {
+          "path": "/home",
+          "description": "User home directories"
+        },
+        {
+          "path": "/var",
+          "description": "Variable data (logs, spool files)"
+        },
+        {
+          "path": "/usr",
+          "description": "User programs and data"
+        },
+        {
+          "path": "/tmp",
+          "description": "Temporary files"
+        },
+        {
+          "path": "/boot",
+          "description": "Boot loader files and kernel"
+        },
+        {
+          "path": "/dev",
+          "description": "Device files"
+        },
+        {
+          "path": "/proc",
+          "description": "Virtual filesystem for process information"
+        }
+      ],
+      "related_commands": ["ls", "cd", "pwd", "mount"]
+    },
+    {
+      "topic_id": "FUND-002",
+      "topic": "Linux Users and Groups",
+      "description": "User and group management concepts",
+      "key_concepts": [
+        "Root user (superuser) with UID 0",
+        "Regular users with UIDs starting from 1000",
+        "System users for services",
+        "Primary and supplementary groups",
+        "User authentication files (/etc/passwd, /etc/shadow, /etc/group)"
+      ],
+      "related_commands": ["useradd", "usermod", "groupadd", "passwd", "id"]
+    },
+    {
+      "topic_id": "FUND-003",
+      "topic": "Linux File Permissions Model",
+      "description": "Explanation of user, group, and others permissions with read, write, and execute bits",
+      "permission_bits": [
+        {
+          "bit": "r (read)",
+          "value": "4",
+          "file_meaning": "View file contents",
+          "directory_meaning": "List directory contents"
+        },
+        {
+          "bit": "w (write)",
+          "value": "2",
+          "file_meaning": "Modify file contents",
+          "directory_meaning": "Create/delete files in directory"
+        },
+        {
+          "bit": "x (execute)",
+          "value": "1",
+          "file_meaning": "Execute as program",
+          "directory_meaning": "Access directory contents"
+        }
+      ],
+      "special_permissions": [
+        {
+          "permission": "setuid (s)",
+          "description": "File executes with owner's privileges"
+        },
+        {
+          "permission": "setgid (s)",
+          "description": "File executes with group's privileges, directories inherit group"
+        },
+        {
+          "permission": "sticky bit (t)",
+          "description": "Only file owner can delete files in directory"
+        }
+      ],
+      "related_commands": ["chmod", "chown", "ls -l", "umask"]
+    },
+    {
+      "topic_id": "FUND-004",
+      "topic": "Linux Process Lifecycle",
+      "description": "Overview of process creation, scheduling, states, and termination",
+      "process_states": [
+        "Running (R)",
+        "Sleeping (S)",
+        "Stopped (T)",
+        "Zombie (Z)",
+        "Uninterruptible Sleep (D)"
+      ],
+      "process_attributes": [
+        "PID (Process ID)",
+        "PPID (Parent Process ID)",
+        "UID (User ID)",
+        "GID (Group ID)",
+        "Priority and Niceness"
+      ],
+      "related_commands": ["ps", "top", "kill", "nice", "renice", "pstree"]
+    },
+    {
+      "topic_id": "FUND-005",
+      "topic": "Pipelines and Redirection",
+      "description": "Using |, >, >>, <, and 2> for chaining and redirecting command output",
+      "operators": [
+        {
+          "operator": "|",
+          "name": "Pipe",
+          "description": "Sends output of one command as input to another",
+          "example": "ls -l | grep .txt"
+        },
+        {
+          "operator": ">",
+          "name": "Output redirection",
+          "description": "Overwrites file with command output",
+          "example": "ls > filelist.txt"
+        },
+        {
+          "operator": ">>",
+          "name": "Append redirection",
+          "description": "Appends command output to file",
+          "example": "date >> log.txt"
+        },
+        {
+          "operator": "<",
+          "name": "Input redirection",
+          "description": "Uses file as command input",
+          "example": "sort < unsorted.txt"
+        },
+        {
+          "operator": "2>",
+          "name": "Error redirection",
+          "description": "Redirects stderr to file",
+          "example": "command 2> error.log"
+        }
+      ],
+      "streams": [
+        {
+          "stream": "stdin (0)",
+          "description": "Standard input"
+        },
+        {
+          "stream": "stdout (1)",
+          "description": "Standard output"
+        },
+        {
+          "stream": "stderr (2)",
+          "description": "Standard error"
+        }
+      ],
+      "related_commands": ["grep", "awk", "sed", "sort", "tee"]
+    }
+  ],
+  "commands": [
+    {
+      "id": "CMD-001",
+      "command": "ls",
+      "category": "File Management",
+      "syntax": "ls [options] [directory]",
+      "description": "Lists directory contents",
+      "detailed_explanation": "The ls command is one of the most frequently used commands in Linux. It displays the contents of directories including files and subdirectories. By default, it shows the contents of the current directory in a compact format.",
+      "common_options": [
+        {
+          "option": "-l",
+          "description": "Long listing format showing permissions, ownership, size, and modification date"
+        },
+        {
+          "option": "-a",
+          "description": "Show all files including hidden files (starting with .)"
+        },
+        {
+          "option": "-h",
+          "description": "Human readable sizes (e.g., 1K, 234M, 2G)"
+        },
+        {
+          "option": "-r",
+          "description": "Reverse order while sorting"
+        },
+        {
+          "option": "-t",
+          "description": "Sort by modification time, newest first"
+        }
+      ],
+      "use_cases": [
+        "Checking what files are in a directory",
+        "Verifying file permissions and ownership",
+        "Finding recently modified files",
+        "Inspecting hidden configuration files"
+      ],
+      "examples": [
+        "ls -la /home/user",
+        "ls -lh *.txt",
+        "ls -t | head -5"
+      ],
+      "related_commands": ["dir", "tree", "stat"],
+      "installation_info": "Pre-installed in all Linux distributions as part of GNU coreutils",
+      "skill_level": "Beginner",
+      "security_considerations": "Regular users can only see files they have permissions for. Use with caution when examining system directories."
+    },
+    {
+      "id": "CMD-002",
+      "command": "grep",
+      "category": "Text Processing",
+      "syntax": "grep [options] pattern [file...]",
+      "description": "Searches for patterns in files",
+      "detailed_explanation": "grep (Global Regular Expression Print) searches input files for lines containing a match to a given pattern. It's an extremely powerful tool for text processing and log analysis.",
+      "common_options": [
+        {
+          "option": "-i",
+          "description": "Ignore case distinctions"
+        },
+        {
+          "option": "-r",
+          "description": "Recursive search through directories"
+        },
+        {
+          "option": "-n",
+          "description": "Show line numbers"
+        },
+        {
+          "option": "-v",
+          "description": "Invert match (show non-matching lines)"
+        },
+        {
+          "option": "-E",
+          "description": "Extended regular expressions (equivalent to egrep)"
+        }
+      ],
+      "use_cases": [
+        "Searching for error messages in log files",
+        "Filtering command output",
+        "Finding specific configuration settings",
+        "Extracting data from files"
+      ],
+      "examples": [
+        "grep -i error /var/log/syslog",
+        "ps aux | grep chrome",
+        "grep -r \"function_name\" /path/to/code/"
+      ],
+      "related_commands": ["awk", "sed", "egrep", "fgrep"],
+      "installation_info": "Pre-installed in all Linux distributions as part of GNU grep",
+      "skill_level": "Intermediate",
+      "security_considerations": "Be careful when using grep with sensitive data as search patterns might be visible in process lists."
+    },
+    {
+      "id": "CMD-003",
+      "command": "chmod",
+      "category": "File Permissions",
+      "syntax": "chmod [options] mode file...",
+      "description": "Changes file permissions",
+      "detailed_explanation": "chmod (change mode) alters the permissions of files and directories. Linux uses a permission system with three categories: user (owner), group, and others. Each category can have read (r), write (w), and execute (x) permissions.",
+      "common_options": [
+        {
+          "option": "-R",
+          "description": "Change files and directories recursively"
+        },
+        {
+          "option": "-v",
+          "description": "Verbose output"
+        },
+        {
+          "option": "-c",
+          "description": "Like verbose but report only when a change is made"
+        }
+      ],
+      "permission_modes": [
+        {
+          "type": "Symbolic",
+          "examples": [
+            "u+x (add execute permission for user)",
+            "g-w (remove write permission for group)",
+            "o=r (set others to read only)",
+            "a+rwx (add all permissions for all)"
+          ]
+        },
+        {
+          "type": "Octal",
+          "examples": [
+            "755 (rwxr-xr-x)",
+            "644 (rw-r--r--)",
+            "777 (rwxrwxrwx)",
+            "600 (rw-------)"
+          ]
+        }
+      ],
+      "use_cases": [
+        "Making scripts executable",
+        "Securing sensitive files",
+        "Setting up shared directories",
+        "Correcting permission issues"
+      ],
+      "examples": [
+        "chmod +x script.sh",
+        "chmod 600 ~/.ssh/id_rsa",
+        "chmod -R 755 public_html/"
+      ],
+      "related_commands": ["chown", "umask", "ls -l"],
+      "installation_info": "Pre-installed in all Linux distributions as part of GNU coreutils",
+      "skill_level": "Intermediate",
+      "security_considerations": "Incorrect permissions can expose sensitive data or make system vulnerable. Never use 'chmod 777' unless absolutely necessary."
+    },
+    {
+      "id": "CMD-004",
+      "command": "apt-get",
+      "category": "Package Management",
+      "syntax": "apt-get [options] command",
+      "description": "Package handling utility for Debian-based systems",
+      "detailed_explanation": "apt-get is a command-line tool for handling packages on Debian, Ubuntu, and related Linux distributions. It simplifies the process of installing, updating, and removing software by automatically handling dependencies.",
+      "common_commands": [
+        {
+          "command": "update",
+          "description": "Refresh package index from repositories"
+        },
+        {
+          "command": "upgrade",
+          "description": "Upgrade all installed packages"
+        },
+        {
+          "command": "install",
+          "description": "Install new packages"
+        },
+        {
+          "command": "remove",
+          "description": "Remove packages (keep configuration files)"
+        },
+        {
+          "command": "purge",
+          "description": "Remove packages and configuration files"
+        },
+        {
+          "command": "autoremove",
+          "description": "Remove automatically installed packages that are no longer needed"
+        }
+      ],
+      "use_cases": [
+        "Installing new software",
+        "Updating system packages",
+        "Removing unwanted applications",
+        "System maintenance"
+      ],
+      "examples": [
+        "sudo apt-get update",
+        "sudo apt-get install nginx",
+        "sudo apt-get upgrade",
+        "sudo apt-get remove --purge package_name"
+      ],
+      "related_commands": ["apt", "dpkg", "snap"],
+      "installation_info": "Pre-installed on Debian-based systems. For other distributions, use their native package managers (yum, dnf, pacman, etc.)",
+      "skill_level": "Beginner",
+      "security_considerations": "Always update package lists before installing. Only install packages from trusted repositories. Use 'sudo' cautiously."
+    },
+    {
+      "id": "CMD-005",
+      "command": "ssh",
+      "category": "Networking",
+      "syntax": "ssh [options] [user@]hostname",
+      "description": "Secure Shell for remote login",
+      "detailed_explanation": "ssh (Secure Shell) is a protocol for securely connecting to remote systems. It provides encrypted communication between two untrusted hosts over an insecure network.",
+      "common_options": [
+        {
+          "option": "-p",
+          "description": "Specify port number (default is 22)"
+        },
+        {
+          "option": "-i",
+          "description": "Specify identity (private key) file"
+        },
+        {
+          "option": "-X",
+          "description": "Enable X11 forwarding"
+        },
+        {
+          "option": "-L",
+          "description": "Set up local port forwarding"
+        },
+        {
+          "option": "-v",
+          "description": "Verbose mode (multiple -v increases verbosity)"
+        }
+      ],
+      "use_cases": [
+        "Remote server administration",
+        "Secure file transfer",
+        "Port forwarding/tunneling",
+        "Remote command execution"
+      ],
+      "examples": [
+        "ssh user@192.168.1.100",
+        "ssh -p 2222 admin@example.com",
+        "ssh -i ~/.ssh/id_rsa server.example.com",
+        "ssh -L 8080:localhost:80 user@remote_server"
+      ],
+      "related_commands": ["scp", "sftp", "ssh-keygen"],
+      "installation_info": "Typically pre-installed. If not: 'sudo apt-get install openssh-client' (Debian) or 'sudo yum install openssh-clients' (RHEL)",
+      "skill_level": "Intermediate",
+      "security_considerations": "Use key-based authentication instead of passwords. Keep SSH keys secure with proper permissions (600). Disable root login in server configuration."
+    },
+    {
+      "id": "CMD-006",
+      "command": "find",
+      "category": "File Search",
+      "syntax": "find [path...] [expression]",
+      "description": "Searches for files in a directory hierarchy",
+      "detailed_explanation": "find is a powerful command-line utility that searches for files and directories based on various criteria like name, size, modification time, permissions, etc. It can execute commands on found files.",
+      "common_expressions": [
+        {
+          "expression": "-name pattern",
+          "description": "Search by filename (supports wildcards)"
+        },
+        {
+          "expression": "-type f/d",
+          "description": "Search for files (f) or directories (d)"
+        },
+        {
+          "expression": "-size +n/-n",
+          "description": "Files larger (+) or smaller (-) than n"
+        },
+        {
+          "expression": "-mtime n",
+          "description": "Files modified n*24 hours ago"
+        },
+        {
+          "expression": "-exec command {} \\;",
+          "description": "Execute command on each found file"
+        },
+        {
+          "expression": "-user username",
+          "description": "Files owned by specific user"
+        }
+      ],
+      "use_cases": [
+        "Finding large files to free up space",
+        "Locating files modified recently",
+        "Searching for files with specific permissions",
+        "Bulk operations on multiple files"
+      ],
+      "examples": [
+        "find /home -name \"*.txt\"",
+        "find /var/log -size +100M",
+        "find . -type f -mtime -7",
+        "find /tmp -user root -exec rm {} \\;"
+      ],
+      "related_commands": ["locate", "which", "whereis"],
+      "installation_info": "Pre-installed in all Linux distributions as part of GNU findutils",
+      "skill_level": "Intermediate",
+      "security_considerations": "Running find as root on entire filesystem can be resource-intensive. Be extremely careful with -exec and deletion commands."
+    },
+    {
+      "id": "CMD-007",
+      "command": "systemctl",
+      "category": "System Management",
+      "syntax": "systemctl [options] command [unit...]",
+      "description": "Control systemd system and service manager",
+      "detailed_explanation": "systemctl is the central management tool for controlling the systemd init system. It's used to manage system services, view system state, and control the system's runlevel (target).",
+      "common_commands": [
+        {
+          "command": "start",
+          "description": "Start a service"
+        },
+        {
+          "command": "stop",
+          "description": "Stop a service"
+        },
+        {
+          "command": "restart",
+          "description": "Restart a service"
+        },
+        {
+          "command": "status",
+          "description": "Show service status"
+        },
+        {
+          "command": "enable",
+          "description": "Enable service to start at boot"
+        },
+        {
+          "command": "disable",
+          "description": "Disable service from starting at boot"
+        },
+        {
+          "command": "list-units",
+          "description": "List active units"
+        },
+        {
+          "command": "daemon-reload",
+          "description": "Reload systemd manager configuration"
+        }
+      ],
+      "use_cases": [
+        "Managing system services",
+        "Troubleshooting service failures",
+        "Configuring startup behavior",
+        "System maintenance"
+      ],
+      "examples": [
+        "sudo systemctl start nginx",
+        "sudo systemctl enable docker",
+        "systemctl status sshd",
+        "sudo systemctl reboot"
+      ],
+      "related_commands": ["journalctl", "service", "initctl"],
+      "installation_info": "Pre-installed on systems using systemd (most modern distributions)",
+      "skill_level": "Intermediate",
+      "security_considerations": "Many systemctl commands require sudo privileges. Be careful when enabling/disabling critical system services."
+    },
+    {
+      "id": "CMD-008",
+      "command": "docker",
+      "category": "Containers",
+      "syntax": "docker [options] command [arguments]",
+      "description": "Containerization platform",
+      "detailed_explanation": "Docker is a platform for developing, shipping, and running applications in containers. Containers package an application with all its dependencies, ensuring consistent behavior across environments.",
+      "common_commands": [
+        {
+          "command": "run",
+          "description": "Create and run a new container from an image"
+        },
+        {
+          "command": "ps",
+          "description": "List running containers"
+        },
+        {
+          "command": "images",
+          "description": "List available images"
+        },
+        {
+          "command": "pull",
+          "description": "Download an image from registry"
+        },
+        {
+          "command": "build",
+          "description": "Build an image from a Dockerfile"
+        },
+        {
+          "command": "exec",
+          "description": "Execute a command in running container"
+        },
+        {
+          "command": "logs",
+          "description": "Fetch container logs"
+        }
+      ],
+      "use_cases": [
+        "Application deployment",
+        "Development environment consistency",
+        "Microservices architecture",
+        "CI/CD pipelines"
+      ],
+      "examples": [
+        "docker run -d -p 80:80 nginx",
+        "docker ps -a",
+        "docker exec -it container_id bash",
+        "docker build -t myapp:v1 ."
+      ],
+      "related_commands": ["docker-compose", "podman", "kubectl"],
+      "installation_info": "Install via package manager or from Docker's repository: https://docs.docker.com/engine/install/",
+      "skill_level": "Advanced",
+      "security_considerations": "Running containers as root can be dangerous. Use non-root users inside containers. Keep Docker and images updated. Secure Docker daemon with TLS."
+    },
+    {
+      "id": "CMD-009",
+      "command": "cron",
+      "category": "Scheduling",
+      "syntax": "crontab [options] file",
+      "description": "Job scheduler for periodic tasks",
+      "detailed_explanation": "cron is a time-based job scheduler that runs commands or scripts at specified times. Users can have individual crontabs managed with the crontab command, while system-wide cron jobs are in /etc/cron.* directories.",
+      "cron_format": {
+        "fields": "minute hour day month day_of_week",
+        "examples": [
+          "0 2 * * * (Daily at 2 AM)",
+          "*/15 * * * * (Every 15 minutes)",
+          "0 8-18 * * 1-5 (Weekdays from 8 AM to 6 PM)",
+          "@reboot (Run at startup)"
+        ]
+      },
+      "common_operations": [
+        {
+          "operation": "crontab -e",
+          "description": "Edit user's crontab"
+        },
+        {
+          "operation": "crontab -l",
+          "description": "List user's cron jobs"
+        },
+        {
+          "operation": "crontab -r",
+          "description": "Remove user's crontab"
+        }
+      ],
+      "use_cases": [
+        "Automated backups",
+        "System maintenance tasks",
+        "Regular data processing",
+        "Monitoring and alerts"
+      ],
+      "examples": [
+        "0 3 * * * /path/to/backup.sh",
+        "*/5 * * * * /usr/bin/check_disk_space",
+        "@daily /path/to/cleanup_logs.sh"
+      ],
+      "related_commands": ["at", "systemd.timer"],
+      "installation_info": "Pre-installed on most systems (cron daemon). Some distributions use cronie, vixie-cron, or systemd timers.",
+      "skill_level": "Intermediate",
+      "security_considerations": "Cron jobs run with user's permissions. Ensure scripts have proper permissions. Redirect output to logs or /dev/null to avoid email spam. Validate commands in cron jobs."
+    },
+    {
+      "id": "CMD-010",
+      "command": "tar",
+      "category": "Archives",
+      "syntax": "tar [options] [archive_file] [files...]",
+      "description": "Archiving utility",
+      "detailed_explanation": "tar (tape archive) combines multiple files into a single archive file, often with compression. It's the standard tool for creating and extracting archives in Linux.",
+      "common_options": [
+        {
+          "option": "-c",
+          "description": "Create a new archive"
+        },
+        {
+          "option": "-x",
+          "description": "Extract from archive"
+        },
+        {
+          "option": "-v",
+          "description": "Verbose output"
+        },
+        {
+          "option": "-f",
+          "description": "Use archive file (required)"
+        },
+        {
+          "option": "-z",
+          "description": "Filter archive through gzip"
+        },
+        {
+          "option": "-j",
+          "description": "Filter through bzip2"
+        },
+        {
+          "option": "-J",
+          "description": "Filter through xz"
+        },
+        {
+          "option": "-t",
+          "description": "List contents of archive"
+        }
+      ],
+      "use_cases": [
+        "Creating backups",
+        "Distributing software",
+        "Transferring multiple files",
+        "Compressing log files"
+      ],
+      "examples": [
+        "tar -czvf backup.tar.gz /path/to/files",
+        "tar -xzvf archive.tar.gz",
+        "tar -tf file.tar",
+        "tar -cjvf backup.tar.bz2 /home/user"
+      ],
+      "common_formats": [
+        ".tar (uncompressed)",
+        ".tar.gz or .tgz (gzip compressed)",
+        ".tar.bz2 (bzip2 compressed)",
+        ".tar.xz (xz compressed)"
+      ],
+      "related_commands": ["gzip", "bzip2", "zip", "7z"],
+      "installation_info": "Pre-installed in all Linux distributions as part of GNU tar",
+      "skill_level": "Beginner",
+      "security_considerations": "Be cautious when extracting archives from untrusted sources (tar bomb attack). Consider extracting in a sandbox first."
+    },
+    {
+      "id": "CMD-011",
+      "command": "ps",
+      "category": "Process Management",
+      "syntax": "ps [options]",
+      "description": "Displays information about running processes",
+      "detailed_explanation": "ps (process status) provides a snapshot of current running processes. It is commonly used for monitoring, debugging, and managing system processes.",
+      "common_options": [
+        {
+          "option": "aux",
+          "description": "Display all processes for all users in BSD format"
+        },
+        {
+          "option": "-e",
+          "description": "Select all processes"
+        },
+        {
+          "option": "-f",
+          "description": "Full-format listing"
+        },
+        {
+          "option": "--forest",
+          "description": "Display process hierarchy"
+        }
+      ],
+      "use_cases": [
+        "Monitoring running processes",
+        "Identifying resource-heavy applications",
+        "Debugging stuck or zombie processes"
+      ],
+      "examples": [
+        "ps aux",
+        "ps -ef | grep nginx",
+        "ps -ejH"
+      ],
+      "related_commands": ["top", "htop", "kill", "nice"],
+      "installation_info": "Provided by procps-ng package, pre-installed on most distributions",
+      "skill_level": "Beginner",
+      "security_considerations": "Process listings may expose command-line arguments containing sensitive information."
+    },
+    {
+      "id": "CMD-012",
+      "command": "top",
+      "category": "Process Management",
+      "syntax": "top [options]",
+      "description": "Displays real-time system resource usage",
+      "detailed_explanation": "top provides a dynamic, real-time view of system processes, CPU usage, memory consumption, and load averages. It is commonly used for performance monitoring.",
+      "interactive_commands": [
+        {
+          "key": "k",
+          "description": "Kill a process"
+        },
+        {
+          "key": "r",
+          "description": "Renice a process"
+        },
+        {
+          "key": "q",
+          "description": "Quit top"
+        },
+        {
+          "key": "P",
+          "description": "Sort by CPU usage"
+        },
+        {
+          "key": "M",
+          "description": "Sort by memory usage"
+        }
+      ],
+      "use_cases": [
+        "Identifying performance bottlenecks",
+        "Monitoring CPU and memory usage",
+        "Diagnosing system slowdowns"
+      ],
+      "examples": [
+        "top",
+        "top -u www-data",
+        "top -o %MEM"
+      ],
+      "related_commands": ["ps", "htop", "vmstat", "free"],
+      "installation_info": "Pre-installed via procps-ng package",
+      "skill_level": "Beginner",
+      "security_considerations": "Killing system processes can destabilize the system."
+    },
+    {
+      "id": "CMD-013",
+      "command": "df",
+      "category": "Disk Management",
+      "syntax": "df [options] [filesystem]",
+      "description": "Reports disk space usage",
+      "detailed_explanation": "df (disk free) shows the amount of available and used disk space on mounted filesystems.",
+      "common_options": [
+        {
+          "option": "-h",
+          "description": "Human-readable output"
+        },
+        {
+          "option": "-T",
+          "description": "Display filesystem type"
+        },
+        {
+          "option": "-i",
+          "description": "Display inode usage"
+        }
+      ],
+      "use_cases": [
+        "Checking available disk space",
+        "Monitoring filesystem usage",
+        "Preventing disk-full conditions"
+      ],
+      "examples": [
+        "df -h",
+        "df -Th",
+        "df -i"
+      ],
+      "related_commands": ["du", "lsblk", "mount"],
+      "installation_info": "Part of GNU coreutils, pre-installed",
+      "skill_level": "Beginner",
+      "security_considerations": "None"
+    },
+    {
+      "id": "CMD-014",
+      "command": "du",
+      "category": "Disk Management",
+      "syntax": "du [options] [file|directory]",
+      "description": "Estimates file and directory space usage",
+      "detailed_explanation": "du (disk usage) calculates the space consumed by files and directories, useful for identifying large disk consumers.",
+      "common_options": [
+        {
+          "option": "-h",
+          "description": "Human-readable sizes"
+        },
+        {
+          "option": "-s",
+          "description": "Display only a total for each argument"
+        },
+        {
+          "option": "--max-depth",
+          "description": "Limit directory traversal depth"
+        }
+      ],
+      "use_cases": [
+        "Finding large directories",
+        "Analyzing disk usage patterns",
+        "Storage optimization"
+      ],
+      "examples": [
+        "du -sh *",
+        "du -h --max-depth=1 /var",
+        "du -sh /home/user"
+      ],
+      "related_commands": ["df", "ls", "ncdu"],
+      "installation_info": "Part of GNU coreutils, pre-installed",
+      "skill_level": "Beginner",
+      "security_considerations": "Running du on large filesystems can be resource intensive."
+    },
+    {
+      "id": "CMD-015",
+      "command": "curl",
+      "category": "Networking",
+      "syntax": "curl [options] URL",
+      "description": "Transfers data from or to a server",
+      "detailed_explanation": "curl is a versatile tool for making HTTP, HTTPS, FTP, and other protocol requests. It is heavily used for API interaction and debugging network services.",
+      "common_options": [
+        {
+          "option": "-I",
+          "description": "Fetch HTTP headers only"
+        },
+        {
+          "option": "-X",
+          "description": "Specify request method (GET, POST, PUT, DELETE)"
+        },
+        {
+          "option": "-d",
+          "description": "Send POST data"
+        },
+        {
+          "option": "-H",
+          "description": "Add custom headers"
+        },
+        {
+          "option": "-o",
+          "description": "Write output to file"
+        }
+      ],
+      "use_cases": [
+        "Testing REST APIs",
+        "Downloading files",
+        "Debugging HTTP services",
+        "Automating web requests"
+      ],
+      "examples": [
+        "curl https://example.com",
+        "curl -I https://example.com",
+        "curl -X POST -d \"name=test\" https://api.example.com",
+        "curl -H \"Authorization: Bearer TOKEN\" https://api.example.com"
+      ],
+      "related_commands": ["wget", "httpie", "nc"],
+      "installation_info": "Usually pre-installed or available via package manager",
+      "skill_level": "Intermediate",
+      "security_considerations": "Avoid exposing API tokens or credentials in shell history."
+    },
+    {
+      "id": "CMD-016",
+      "command": "awk",
+      "category": "Text Processing",
+      "syntax": "awk [options] 'pattern {action}' file",
+      "description": "Pattern scanning and processing language",
+      "detailed_explanation": "awk is a programming language designed for text processing and typically used as a data extraction and reporting tool. It operates on a line-by-line basis.",
+      "common_options": [
+        {
+          "option": "-F",
+          "description": "Specify field separator"
+        },
+        {
+          "option": "-v",
+          "description": "Assign variable"
+        },
+        {
+          "option": "-f",
+          "description": "Read program from file"
+        }
+      ],
+      "built_in_variables": [
+        "NR (Number of Records/line number)",
+        "NF (Number of Fields in current record)",
+        "FS (Field Separator)",
+        "OFS (Output Field Separator)",
+        "$0 (Entire line)",
+        "$1, $2... (Individual fields)"
+      ],
+      "use_cases": [
+        "Extracting specific columns from text",
+        "Calculating statistics from log files",
+        "Data transformation and reformatting",
+        "Text filtering based on patterns"
+      ],
+      "examples": [
+        "awk '{print $1}' file.txt",
+        "awk -F: '{print $1, $3}' /etc/passwd",
+        "awk 'NR > 5 {print}' file.txt",
+        "awk '{sum += $1} END {print sum}' numbers.txt"
+      ],
+      "related_commands": ["sed", "grep", "cut", "sort"],
+      "installation_info": "Pre-installed as part of GNU awk (gawk)",
+      "skill_level": "Advanced",
+      "security_considerations": "awk scripts can execute shell commands; validate input when processing untrusted data."
+    },
+    {
+      "id": "CMD-017",
+      "command": "sed",
+      "category": "Text Processing",
+      "syntax": "sed [options] 'command' file",
+      "description": "Stream editor for filtering and transforming text",
+      "detailed_explanation": "sed (stream editor) performs basic text transformations on an input stream (a file or input from a pipeline). It reads line by line, applies transformations, and outputs the result.",
+      "common_options": [
+        {
+          "option": "-i",
+          "description": "Edit files in place"
+        },
+        {
+          "option": "-n",
+          "description": "Suppress automatic printing"
+        },
+        {
+          "option": "-e",
+          "description": "Add the script to the commands to be executed"
+        }
+      ],
+      "common_commands": [
+        {
+          "command": "s/pattern/replacement/",
+          "description": "Substitute pattern with replacement"
+        },
+        {
+          "command": "d",
+          "description": "Delete lines"
+        },
+        {
+          "command": "p",
+          "description": "Print lines"
+        },
+        {
+          "command": "a\\text",
+          "description": "Append text after line"
+        }
+      ],
+      "use_cases": [
+        "Search and replace text in files",
+        "Delete or extract specific lines",
+        "Text formatting and cleanup",
+        "Batch file modifications"
+      ],
+      "examples": [
+        "sed 's/old/new/g' file.txt",
+        "sed -i 's/foo/bar/g' *.txt",
+        "sed '/pattern/d' file.txt",
+        "sed -n '5,10p' file.txt"
+      ],
+      "related_commands": ["awk", "grep", "tr", "perl"],
+      "installation_info": "Pre-installed as part of GNU sed",
+      "skill_level": "Intermediate",
+      "security_considerations": "When using -i option, always backup files first. Test sed commands without -i first."
+    },
+    {
+      "id": "CMD-018",
+      "command": "vim",
+      "category": "Text Editing",
+      "syntax": "vim [options] [file]",
+      "description": "Advanced text editor",
+      "detailed_explanation": "vim (Vi IMproved) is a highly configurable text editor built to enable efficient text editing. It has multiple modes: Normal (for commands), Insert (for typing text), and Visual (for selection).",
+      "modes": [
+        {
+          "mode": "Normal mode",
+          "description": "Default mode for entering commands",
+          "key": "Esc"
+        },
+        {
+          "mode": "Insert mode",
+          "description": "For inserting text",
+          "key": "i, a, o"
+        },
+        {
+          "mode": "Visual mode",
+          "description": "For selecting text",
+          "key": "v, V, Ctrl+v"
+        },
+        {
+          "mode": "Command-line mode",
+          "description": "For entering Ex commands",
+          "key": ":"
+        }
+      ],
+      "essential_commands": [
+        {
+          "command": ":w",
+          "description": "Save file"
+        },
+        {
+          "command": ":q",
+          "description": "Quit"
+        },
+        {
+          "command": ":wq",
+          "description": "Save and quit"
+        },
+        {
+          "command": ":q!",
+          "description": "Quit without saving"
+        },
+        {
+          "command": "dd",
+          "description": "Delete line"
+        },
+        {
+          "command": "yy",
+          "description": "Yank (copy) line"
+        },
+        {
+          "command": "p",
+          "description": "Paste"
+        },
+        {
+          "command": "/pattern",
+          "description": "Search forward"
+        },
+        {
+          "command": "?pattern",
+          "description": "Search backward"
+        }
+      ],
+      "use_cases": [
+        "Editing configuration files",
+        "Programming and scripting",
+        "System administration tasks",
+        "Text manipulation"
+      ],
+      "examples": [
+        "vim file.txt",
+        "vim +10 file.txt (open at line 10)",
+        "vim -o file1.txt file2.txt (split windows)"
+      ],
+      "related_commands": ["vi", "nano", "emacs"],
+      "installation_info": "Often pre-installed. If not: 'sudo apt-get install vim' or 'sudo yum install vim'",
+      "skill_level": "Intermediate",
+      "security_considerations": "vim can execute shell commands with :!command. Be careful when editing sensitive files."
+    }
+  ],"troubleshooting_guides": [
+  {
+    "issue": "Disk is full",
+    "diagnosis": [
+      "df -h",
+      "du -sh /*"
+    ],
+    "resolution": [
+      "Remove unused logs",
+      "Clean package cache",
+      "Delete temporary files"
+    ],
+    "related_commands": ["df", "du", "apt-get"]
+  },
+  {
+    "issue": "Service not starting",
+    "diagnosis": [
+      "systemctl status service",
+      "journalctl -xe"
+    ],
+    "resolution": [
+      "Fix configuration",
+      "Restart service",
+      "Reload daemon"
+    ],
+    "related_commands": ["systemctl", "journalctl"]
+  }
+],
+
+  "common_scenarios": [
+    {
+      "scenario_id": "SCEN-001",
+      "title": "System Monitoring and Performance",
+      "description": "Commands and techniques for monitoring system performance",
+      "tasks": [
+        "Check CPU usage: top, htop, mpstat",
+        "Monitor memory: free -h, vmstat",
+        "Disk I/O: iostat, iotop",
+        "Network: iftop, nethogs, netstat",
+        "Process analysis: ps aux --sort=-%mem"
+      ],
+      "command_sequence": "top -> press '1' for per-core CPU -> press 'M' for memory sort -> press 'c' for command line"
+    },
+    {
+      "scenario_id": "SCEN-002",
+      "title": "File System Management",
+      "description": "Managing files, directories, and storage",
+      "tasks": [
+        "Find large files: find / -type f -size +100M",
+        "Check disk usage: df -h, du -sh *",
+        "Clean up tmp: find /tmp -type f -atime +7 -delete",
+        "Backup directory: tar -czf backup.tar.gz /path/to/dir"
+      ]
+    },
+    {
+      "scenario_id": "SCEN-003",
+      "title": "Network Troubleshooting",
+      "description": "Diagnosing and fixing network issues",
+      "tasks": [
+        "Check connectivity: ping google.com",
+        "DNS resolution: nslookup example.com, dig example.com",
+        "Network routes: traceroute google.com",
+        "Port checking: netstat -tulpn, ss -tulpn",
+        "Firewall: iptables -L, ufw status"
+      ]
+    },
+    {
+      "scenario_id": "SCEN-004",
+      "title": "Log Analysis and Debugging",
+      "description": "Analyzing system logs for troubleshooting",
+      "tasks": [
+        "View logs: tail -f /var/log/syslog",
+        "Search errors: grep -i error /var/log/*.log",
+        "Monitor auth: tail -f /var/log/auth.log",
+        "Journal logs: journalctl -u service-name -f"
+      ]
+    }
+  ],
+  "package_managers": [
+    {
+      "name": "apt",
+      "distributions": ["Debian", "Ubuntu", "Linux Mint"],
+      "common_commands": [
+        "apt update",
+        "apt upgrade",
+        "apt install package",
+        "apt remove package",
+        "apt search keyword"
+      ]
+    },
+    {
+      "name": "yum",
+      "distributions": ["RHEL", "CentOS 7", "Fedora (older)"],
+      "common_commands": [
+        "yum update",
+        "yum install package",
+        "yum remove package",
+        "yum search keyword"
+      ]
+    },
+    {
+      "name": "dnf",
+      "distributions": ["Fedora", "RHEL 8+", "CentOS 8+"],
+      "common_commands": [
+        "dnf update",
+        "dnf install package",
+        "dnf remove package",
+        "dnf search keyword"
+      ]
+    },
+    {
+      "name": "pacman",
+      "distributions": ["Arch Linux", "Manjaro"],
+      "common_commands": [
+        "pacman -Syu",
+        "pacman -S package",
+        "pacman -R package",
+        "pacman -Ss keyword"
+      ]
+    },
+    {
+      "name": "zypper",
+      "distributions": ["openSUSE"],
+      "common_commands": [
+        "zypper update",
+        "zypper install package",
+        "zypper remove package",
+        "zypper search keyword"
+      ]
+    }
+  ],
+  "categories": [
+    "File Management",
+    "Text Processing",
+    "File Permissions",
+    "Package Management",
+    "Networking",
+    "File Search",
+    "System Management",
+    "Containers",
+    "Scheduling",
+    "Archives",
+    "Process Management",
+    "Disk Management",
+    "Text Editing"
+  ],
+  "skill_levels": ["Beginner", "Intermediate", "Advanced"],
+  "dataset_statistics": {
+    "total_commands": 18,
+    "installation_guides": 3,
+    "fundamental_concepts": 5,
+    "common_scenarios": 4,
+    "package_managers": 5,
+    "categories_covered": 13,
+    "average_options_per_command": 5.2,
+    "average_examples_per_command": 3.4
+  },
+  "recommended_extensions": [
+    "Add 20-30 more commands for comprehensive coverage",
+    "Include troubleshooting scenarios",
+    "Add command combinations and pipelines",
+    "Include performance considerations",
+    "Add platform-specific variations (different distros)",
+    "Include cheat sheets for quick reference",
+    "Add video tutorial links for visual learners",
+    "Include practice exercises for each command"
+  ],
+  "metadata": {
+    "data_format": "JSON",
+    "intended_use": "RAG system training for Linux command assistance",
+    "update_frequency": "Monthly",
+    "contributors": ["Linux Documentation Project", "Community Contributors"],
+    "license": "CC BY-SA 4.0"
+  }
+}

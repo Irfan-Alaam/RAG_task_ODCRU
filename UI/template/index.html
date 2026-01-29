@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linux RAG Assistant 🐧</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>🐧 Linux Assistant</h2>
+
+  <button onclick="quick('List 5 most common Linux commands')">Common Commands</button>
+  <button onclick="quick('Explain Linux file permissions')">File Permissions</button>
+  <button onclick="quick('How to install software on Ubuntu?')">Install Software</button>
+  <hr>
+</div>
+
+<div class="chat-area">
+  <div id="chat"></div>
+
+  <div class="input-box">
+    <input id="question" placeholder="Ask about Linux..." />
+    <button onclick="send()">Send</button>
+  </div>
+</div>
+
+<script src="/static/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+chromadb==1.4.1
+fastapi==0.128.0
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-core==0.2.38
+langchain-groq==0.1.5
+python-dotenv==1.2.1
+sentence-transformers==5.2.0
+uvicorn==0.40.0
