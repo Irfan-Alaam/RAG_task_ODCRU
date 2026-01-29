@@ -31,7 +31,8 @@ def build_vector_store(model):
 
     data = load_data(DATA_PATH)
     chunks = chunk(data)
-
+    # print(f"Created {len(chunks)}")
+    # print(chunks[3])
     ids, documents, metadatas = [], [], []
 
     for i, c in enumerate(chunks):
@@ -50,3 +51,4 @@ def build_vector_store(model):
     
     print(f"--> Stored {len(ids)} vectors in ChromaDB <--")
     return collection
+

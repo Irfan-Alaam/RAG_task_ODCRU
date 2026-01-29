@@ -362,5 +362,3 @@ def chunk(data:Dict)->List[Dict]:
         })
     return chunks
 
-# print(f"Created {len(chunks)}")
-# print(chunks[3])
