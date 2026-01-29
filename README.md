@@ -61,4 +61,8 @@ Create a .env file:
 3. How to install Linux on a virtual machine
 
 > If an answer is not present in the dataset, the assistant will respond:
-> **"I don't know based on the provided documentation."**
+> **"I don't know based on the provided documentation."****
+
+**SAMPLE OUTPUT**
+<img width="1920" height="1080" alt="Screenshot (540)" src="https://github.com/user-attachments/assets/c504d27c-be7c-4df0-85d5-d04357c529c8" />
+<img width="1920" height="1080" alt="Screenshot (539)" src="https://github.com/user-attachments/assets/b0f60769-3ed9-4ffe-8c9e-af3b07651aef" />
