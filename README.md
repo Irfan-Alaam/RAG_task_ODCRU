@@ -43,6 +43,7 @@ Create a .env file:
 3️⃣ Install Dependencies
 
     pip install -r requirements.txt
+    (MAKE SURE THE PIP IS OF LATEST VERSION ELSE IT WILL SHOW TIMEOUT ERROR)
 
 4️⃣ Run the Application
 
