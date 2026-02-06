@@ -37,6 +37,19 @@ def chunk(data:Dict)->List[Dict]:
                     "command": command_name
                 }
             })
+        if cmd.get("common_commands"):
+            text=f"Command:{command_name}\n\nCommon commands:\n"
+            for command in cmd["common_commands"]:
+                text+=f"-{command['command']}:{command['description']}\n"
+            chunks.append(
+                {
+                    "text":text.strip(),
+                    "metadata":{
+                        "type":"common_commands",
+                        "command":command_name
+                    }
+                }
+            )
 
         if cmd.get("permission_modes"):
             text = f"Command: {command_name}\n\nPermission modes:\n"

@@ -1141,7 +1141,7 @@
           "key": ":"
         }
       ],
-      "essential_commands": [
+      "common_commands": [
         {
           "command": ":w",
           "description": "Save file"

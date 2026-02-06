@@ -1,6 +1,8 @@
 from langchain.memory import ConversationBufferMemory
 
 class RAGChain:
+    #The RAGChain class implements the orchestration layer that
+    #ties together retrieval, context management, and generation
     def __init__(self, retriever, llm, prompt):
         self.retriever = retriever
         self.memory = ConversationBufferMemory(
@@ -8,7 +10,7 @@ class RAGChain:
             return_messages=False
         )
         self.chain = prompt | llm
-
+    #normalize evrything to plain text
     def format_context(self, doc: dict) -> str:
         if "text" in doc and doc["text"]:
             return doc["text"]

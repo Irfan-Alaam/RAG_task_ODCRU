@@ -1,11 +1,11 @@
-MIN_SCORE = 0.55
 TOP_K = 3
 EMBEDDING_MODEL = "BAAI/bge-m3"
 DATA_PATH="data/linux.json"
 MODEL_PATH = "models/bge-m3"
 GROQ_MODEL="llama-3.3-70b-versatile"
-# EMBEDDINGS_PATH = "embeddings.npy"
 DEVICE='cpu'
+# MIN_SCORE = 0.55
+# EMBEDDINGS_PATH = "embeddings.npy"
 #all-mpnet-base-v2
 #BAAI/bge-m3
 #all-MiniLM-L6-v2
